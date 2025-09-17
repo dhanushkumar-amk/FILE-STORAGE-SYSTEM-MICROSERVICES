@@ -1,6 +1,11 @@
-const path = require("path");
-const fs = require("fs");
-const winston = require("winston");
+import path from "path";
+import fs from "fs";
+import winston from "winston";
+import { fileURLToPath } from "url";
+
+// Recreate __dirname in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Logs directory inside server/src/logs
 const logDir = path.join(__dirname, "../logs");
@@ -39,4 +44,4 @@ const logger = winston.createLogger({
   ],
 });
 
-module.exports = logger;
+export default logger;
