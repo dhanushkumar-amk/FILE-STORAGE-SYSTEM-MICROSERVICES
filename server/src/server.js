@@ -7,6 +7,7 @@ import logger from "./utils/logger.js";
 import errorHandler from "./middlewares/errorHandler.js";
 import connectDB from "./config/mongoDB.js";
 import initRedis from "./config/redis.js";
+import rateLimiter from "./middlewares/rateLimiter.js";
 
 // Load environment variables
 dotenv.config();
@@ -24,7 +25,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
-app.use(morgan("combined"));
+app.use(morgan("common"));
+
+// Rate Limiting
+app.use(rateLimiter(100, 60)); // 100 requests per minute
 
 // Main Route
 app.get("/", (req, res) => {
