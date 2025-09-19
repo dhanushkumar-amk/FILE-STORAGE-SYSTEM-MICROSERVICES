@@ -6,7 +6,7 @@ let redisClient;
 async function initRedis() {
   if (!redisClient) {
     redisClient = createClient({
-      url: process.env.REDIS_URI, 
+      url: process.env.REDIS_URI,
     });
 
     // Event listeners
@@ -21,5 +21,4 @@ async function initRedis() {
   }
   return redisClient;
 }
-
 export default initRedis;
