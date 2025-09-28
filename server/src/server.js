@@ -9,6 +9,7 @@ import errorHandler from "./middlewares/errorHandler.js";
 import connectDB from "./config/mongoDB.js";
 import initRedis from "./config/redis.js";
 import rateLimiter from "./middlewares/rateLimiter.js";
+// completed
 
 // Import routes
 import authRoutes from "./routes/authRoutes.js";
